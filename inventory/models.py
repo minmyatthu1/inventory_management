@@ -10,7 +10,7 @@ from django.db import models
 
 class Buy(models.Model):
     buy_id = models.AutoField(primary_key=True)
-    inventory = models.ForeignKey('Inventory', models.CASCADE)
+    inventory= models.ForeignKey('Inventory', models.CASCADE)
     buy_date = models.DateField()
 
     class Meta:
@@ -22,13 +22,17 @@ class Buy(models.Model):
 class Inventory(models.Model):
     inventory_id = models.AutoField(primary_key=True)
     item_detail = models.CharField(max_length=100)
-    operation = models.CharField(db_column='Operation', max_length=5)  # Field name made lowercase.
+    # Field name made lowercase.
+    status = models.CharField(db_column='Operation', max_length=5)
     price = models.IntegerField()
     comments = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'inventory'
+
+    def __str__(self):
+        return f"{self.inventory_id}"
 
 
 class Sell(models.Model):
@@ -40,3 +44,6 @@ class Sell(models.Model):
         managed = True
         db_table = 'sell'
         unique_together = (('sell_id', 'inventory'),)
+    
+    def __str__(self):
+        return f"{self.sell_id}, {self.sell_date}" 

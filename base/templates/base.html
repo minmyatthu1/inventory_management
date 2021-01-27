@@ -1,73 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>{% block title %} {% endblock %}</title>
-    {% load static %}
 
-    <link
-      rel="stylesheet"
-      href="{%static 'css/bootstrap.min.css' %}"
-      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-      crossorigin="anonymous"
-    />
+<head>
+  <title>{% block title %} {% endblock %}</title>
+  {% load static %}
 
-    <script src="{%static 'bootstrap-4.5.3-dist/js/bootstrap.min.js' %}"></script>
-  </head>
+  <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
 
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Home</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
+  <script src="{%static 'js/bootstrap.min.js' %}"></script>
+  <script src="{%static 'bootstrap-4.5.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+
+  <script src="{%static 'js/jquery-3.5.1.slim.min.js' %}"></script>
+  <!-- above and below are for dropdown -->
+  <script src="{%static 'js/bootstrap.bundle.min.js' %}"></script>
+
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <li class="nav-item active">
+          <div class="dropdown">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Buy
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="nav-link" href="{%url 'create_buy' %}"> Add buy</a>
+                <a class="dropdown-item" href="#"> Buy detail</a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+        <li class="nav-item">
+          <div class="dropdown">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Inventory
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="nav-link" href="{%url 'inventory' %}"> Add inventory </a>
+                <a class="dropdown-item" href="#"> Inventory detail </a>
+              </div>
+            </div>
+          </div>
+
+        </li>
+
+
+
+
+        <li class="nav-item">
+          <div class="dropdown">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sell
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="nav-link" href="{%url 'sell' %}"> Add sell </a>
+                <a class="dropdown-item" href="#"> Sell detail </a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="{%url 'create_buy' %}">
-              Buy <span class="sr-only">(current)</span></a
-            >
-          </li>
+    </form>
+  </nav>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{%url 'inventory' %}">Inventory</a>
-          </li>
+  <div id="content">{% block content %} {% endblock %}</div>
+</body>
 
-          <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Buy</a>
-                </li>            Leaving space for buy and sell tab-->
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
-            >
-          </li>
-        </ul>
-      </div>
-      
-      <form class="form-inline">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </form>
-    </nav>
-
-    <div id="content">{% block content %} {% endblock %}</div>
-  </body>
 </html>
