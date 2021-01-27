@@ -4,24 +4,23 @@
 
 {%block content %}
 
-<h1>This is inventory page</h1>
+<h1>This is sell page</h1>
 
 <form action="" method="post">
     {% csrf_token %}
-
     <div class="row">
         <div class="col">
             {{form}}
 
         </div>
         <div class="col">
-            <h3> Inventory ID : {{ inv_id }}</h3> </br>
-            <p id="inven_id"></p>
+
         </div>
     </div></br>
 
     <input type='submit' value='Add Item' class="btn btn-primary">
 </form>
+
 
 
 {% endblock %}
