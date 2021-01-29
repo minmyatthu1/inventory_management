@@ -1,0 +1,40 @@
+{
+  "workbench.colorCustomizations": {
+    "editorRuler.foreground": "#8f458d"
+  },
+  "editor.rulers": [80],
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+
+  "python.linting.enabled": true,
+  "python.linting.ignorePatterns": [".vscode/*.py", "**/site-packages/**/*.py"],
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--exclude=*/**/migrations/*.py"],
+
+  "files.associations": {
+    "**/*.html": "html",
+    "**/templates/**/*.html": "django-html",
+    "**/templates/**/*": "django-txt",
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+  },
+  "emmet.includeLanguages": { "django-html": "html" },
+
+  "beautify.language": {
+    "js": {
+      "type": ["javascript", "json", "jsonc"],
+      "filename": [".jshintrc", ".jsbeautifyrc"]
+    },
+    "css": ["css", "less", "scss"],
+    "html": ["htm", "html", "django-html"]
+  },
+  "[django-html]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "HookyQR.beautify"
+  }
+}
