@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('buy/', include('buy.urls')),
-    path('inventory/', include('inventory.urls')),
-    # path('sell/', )
+    path('buy/', include('buy.urls', namespace='buy')),
+    path('inventory/', include('inventory.urls', namespace='inventory')),
+    path('sell/', include('sell.urls', namespace='sell')),
+    # APIs
+    path('api/', include('inventory.api.urls', namespace='inventory-api')),
 ]
