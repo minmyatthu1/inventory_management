@@ -1,10 +1,4 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
+
 from django.db import models
 
 
@@ -26,13 +20,14 @@ class Inventory(models.Model):
     status = models.CharField(db_column='Operation', max_length=5)
     price = models.IntegerField()
     comments = models.CharField(max_length=45, blank=True, null=True)
+    created_time = models.DateField(auto_now=True)
 
     class Meta:
         managed = True
         db_table = 'inventory'
 
     def __str__(self):
-        return f"{self.inventory_id}"
+        return f"{self.inventory_id}, {self.item_detail}, {self.status}"
 
 
 class Sell(models.Model):
@@ -47,3 +42,12 @@ class Sell(models.Model):
     
     def __str__(self):
         return f"{self.sell_id}, {self.sell_date}" 
+
+# def update_inventory(sender, instance, **kwargs):
+#     print("updated")
+#     b = Inventory.objects.get(pk=1)
+#     b.status = "Sold"
+#     b.save()                # update inventory status when signal come
+
+
+# post_save.connect(update_inventory, sender=Sell)

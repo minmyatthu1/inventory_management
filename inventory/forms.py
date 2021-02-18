@@ -12,5 +12,5 @@ class Inventory_form(forms.ModelForm):
             'item_detail': forms.TextInput(attrs={'class': 'form-control'}),
             'status': forms.TextInput(attrs={'class': 'form-control'}),
             'price': forms.NumberInput(attrs={'class': 'form-control'}),
-            'comments': forms.NumberInput(attrs={'class': 'form-control'}),
+            'comments': forms.TextInput(attrs={'class': 'form-control'}),
         }
