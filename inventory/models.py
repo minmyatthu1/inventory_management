@@ -1,4 +1,4 @@
-
+from django.utils import timezone
 from django.db import models
 
 
@@ -20,7 +20,7 @@ class Inventory(models.Model):
     status = models.CharField(db_column='Operation', max_length=5)
     price = models.IntegerField()
     comments = models.CharField(max_length=45, blank=True, null=True)
-    created_time = models.DateField(auto_now=True)
+    created_time = models.DateField(default=timezone.now)
 
     class Meta:
         managed = True
