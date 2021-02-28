@@ -27,7 +27,7 @@ class Inventory(models.Model):
         db_table = 'inventory'
 
     def __str__(self):
-        return f"{self.inventory_id}, {self.item_detail}, {self.status}"
+        return f"{self.inventory_id}, {self.item_detail}, {self.price}, {self.status}"
 
 
 class Sell(models.Model):

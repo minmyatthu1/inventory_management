@@ -33,10 +33,21 @@ def create_inventory(request):                                          #adding 
     return render(request, 'inventory.html', { 'inv_id': inv_id, 'form': form })
 
 
-class Inventory_List(ListView):                                         #inventory_list
-    model=Inventory
-    template_name='inventory_list.html'
-    context_object_name='inventory_list'
+# class All_Inventory_List(ListView):                                        
+#     model=Inventory
+#     template_name='all_inventory.html'
+#     context_object_name='all_inventory'
+#     ordering = ['-inventory_id']
+
+
+def All_Inventory_List(request):                                           #all inventory_list
+    all_inven_list = Inventory.objects.all().order_by('inventory_id')
+    return render(request, 'all_inventory.html', {'all_inven_list': all_inven_list })
+
+
+def Inventory_List(request):                                          #inventory_list
+    inven_list = Inventory.objects.all().filter(status='Stock').order_by('inventory_id')
+    return render(request, 'inventory_list.html', {'inven_list': inven_list })
 
 
 def Sold_list(request):                                          #sold_list
